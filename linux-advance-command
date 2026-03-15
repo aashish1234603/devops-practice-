@@ -1,0 +1,127 @@
+important Linux command to follow in future::
+===========================================================
+
+nmtui => setup hostname , ip, gateway etc //ui mode
+
+
+USER MANAGEMENT ::
+==================
+
+$ id : 
+$ id user_name :
+$ useradd user2 => only create a user default mode without cmt
+$ useradd -c HR user2 => create comment with HR
+$ passwd user_name => set passwd
+$ cat /etc/passwd  => check all user
+$ whoami => to check your current user
+$ su username
+$ cd ~   => help you to take the user to their home dir
+
+
+To get the details of a particular user ::
+---------------------------------------------------------
+$ getent passwd appuser |or|
+$ cat /etc/passwd | grep user1
+
+
+Group Details ::
+----------------
+$ groupadd devops
+$ groupdel devops
+$ getent group
+
+
+Add User To a Particular Group :
+--------------------------------
+$ sudo usermod -aG group_name user_name 
+$ sudo usermod -aG group1,group2,group3 username  //add a user to multiple group
+$ sudo usermod -aG 
+
+User Permission :
+-----------------------
+$ sudo chown azureuser file.txt		// change the owner of the file
+$ sudo chgrp devops file.txt		// just to change the group
+$ sudo chown azureuser:devops file.txt	// user and group both change
+$ sudo chown -R azureuser:devops /opt/app // recursively apply to the files inside the dir
+
+
+dnsmasq:x:999:65534:dnsmasq:/var/lib/misc:/usr/sbin/nologin
+
+it has 7 portion --
+1. user_name
+2. mask password
+3. user_id
+4. Grp_id
+5. comment
+6. home_diectory
+7. shell to use
+
+
+To change the default HOME directory of user with a proper shell::
+------------------------------------------------------------------------------------------
+$ useradd -m --home /opt/synopsis --shell /bin/bash -c QA user
+$ useradd -M user_name => create user in home default directory
+
+
+
+CPU, memory, band width , disk 
+file --
+networks --
+tel-net---
+
+postgres - cli command // psql 
+port verifaction / routing check ... trace route --
+
+Networking Related commands ::
+===========================
+> ip address show |or| ip a   are the advanced version of "ifconfig" (iproute2 => tool use for this)
+> ip route → “Shows routing table” "Gate-way" , old one is "route -n"
+> ping x.x.x.x -> check site is reachable or not (use icmp protocol)
+> curl http://app_url	-> App not opening on the browser (work on application layer)
+> nc -zv server_ip 8080 (work on tcp/udp)  |or| telnet server_ip 25  -> port is open or not on that ip ("telnet" was the older one only tcp )
+> ss -an   => give details of all sockets  ( "netstat" is the depreciated command )
+> ss -tulnp => tells you which ports are open in this vm using th ip and the apps using it
+> dig www.xxxxxx.com => give you the dns ip (deep)
+> nslookup www.xxxx.com => give you the Dns details only (fast)
+> telnet <ip> <port> => check the servers specific ports are open or not (only for port testing) ne one is "nc"
+> wget => to download the package from internet.
+> nmap -sV 40.81.227.54 => which service and port are open or closed
+> tracepath google.com => ping hit but app slow ( where the hop takes time )
+> lsof -i :8080 => which process use this port.
+
+
+FILE REALTED COMMANDS ::
+------------------------
+
+$ lsblk => To check Disk, partition, mount point in a tree format
+$ df -h => which file system is how much filled
+$ du -sh /var/log => how much the folder take space
+$ find / -name "*.log" => find same type of extension
+$ locate file.txt => search every where ( faster then find)
+
+
+CPU RELATED COMMANDS ::
+===============================
+
+$ top |or| htop => live cpu monitor (press P = cpu usage & M = Memory usage )
+$ uptime => cpu load quick check
+$ lscpu => cpu hardware details
+$ mpstat -P ALL  => give the real time usage of each cpu, insted of "all" we can mention the number , and after that we can mention the time at which it going to refresh and all
+
+
+
+
+ls     list check
+cd     change directory
+mkdir  make folder   
+rm     remove anything
+cp     copy
+mv     move
+cat    to view any file or folder
+touch  to make any file 
+pwd    present working directory
+chmod  
+chown
+
+
+
